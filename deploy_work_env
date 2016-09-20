@@ -8,39 +8,41 @@ install() {
 
 backup_conf() {
 	# Do not backup if it's a symbolic link (installed by this script)
-	[ ! -L $1 ] && mv $1 $1.backup
+	if [ ! -L $1 ]; then mv $1 $1.backup; fi
+}
+
+link() {
+	ln -f -s $@
 }
 
 ## BEGIN Realpath
 install realpath
 ## END Realpath
 
-
 ## BEGIN  Vim 
-# Installation
 install vim python-flake8
 
-# Configuration
-[ -f $HOME/.vimrc ] && backup_conf $HOME/.vimrc
-ln -s `realpath my_confs/vimrc` $HOME/.vimrc
+if [ -f $HOME/.vimrc ]; then backup_conf $HOME/.vimrc; fi
+link `realpath my_confs/vimrc` $HOME/.vimrc
 
-[ -d $HOME/.vim/bundle ] || git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+if [ ! -d $HOME/.vim/bundle ]
+then
+	git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+fi
 vim +PluginInstall +qall
 ## END Vim
 
-
-## Chromium
-install chromium-browser
-
-
-## Terminator
+## BEGIN Terminator
 install terminator
 mkdir -p $HOME/.config/terminator/
-[ -f $HOME/.config/terminator/config ] && backup_conf $HOME/.config/terminator/config
-ln -s `realpath my_confs/terminator_config` $HOME/.config/terminator/config
+if [ -f $HOME/.config/terminator/config ]; then backup_conf $HOME/.config/terminator/config; fi
+link `realpath my_confs/terminator_config` $HOME/.config/terminator/config
+## END Termintor
 
-## Oh my zsh
-install zsh
-[ -f $HOME/.zshrc ] && backup_conf $HOME/.zshrc
-ln -s `realpath my_confs/zshrc` $HOME/.zshrc
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+## BEGIN Oh my zsh
+install zsh curl
+if [ -f $HOME/.zshrc ]; then backup_conf $HOME/.zshrc; fi
+# Do not call env zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | fgrep -v 'env zsh')"
+link `realpath my_confs/zshrc` $HOME/.zshrc
+## END Oh my zsh

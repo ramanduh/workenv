@@ -1,0 +1,79 @@
+" Vundle setup
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tmhedberg/SimpylFold'
+" Autocomplte plugin
+" Bundle 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+au BufNewFile,BufRead *.py
+			\set tabstop=4
+			\set softtabstop=4
+			\set shiftwidth=4
+			\set textwidth=79
+			\set expandtab
+			\set autoindent
+			\set fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css
+			\set tabstop=2
+			\set softtabstop=2
+			\set shiftwidth=2
+
+"Flag unnecessary whitespace
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" utf8 support
+set encoding=utf8
+
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" General vim config 
+let python_highlight_all=1
+syntax on
+set ignorecase
+set nu
+set hlsearch
+set incsearch
+" Remove hilight on C-l
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+
+" Run Flake8 on writting a Python FIle
+au BufWritePost *.py call Flake8()
+
+" NERDTree Config
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+" Tab characteres 4-spaces-wide
+set tabstop=4
+set shiftwidth=4
+
+" Boilerplate code
+augroup boilerplate
+au BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl># -*- coding: utf-8 -*-\<nl>\<nl>\"|$
+au BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\<nl>\"|$
+augroup END

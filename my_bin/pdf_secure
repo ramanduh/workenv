@@ -3,14 +3,14 @@
 set -e 
 
 usage() {
-	echo "Usage: $0 [-d <DEPH>] [-r] [<DIR-NAME>]"
+	echo "Usage: $0 [-f] [-r] [<DIR-NAME>]"
 	cat << EOF
 
 Protect all pdf files in <DIR-NAMES>
 
 Options :
 -r : recursive
--f : if set old protected file will replaced
+-f : if set, existing protected files will be replaced
 EOF
     exit 0
 }

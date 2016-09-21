@@ -40,9 +40,13 @@ link `realpath my_confs/terminator_config` $HOME/.config/terminator/config
 ## END Termintor
 
 ## BEGIN Oh my zsh
-install zsh curl
+install zsh curl xclip
 if [ -f $HOME/.zshrc ]; then backup_conf $HOME/.zshrc; fi
 # Do not call env zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | fgrep -v 'env zsh')"
 link `realpath my_confs/zshrc` $HOME/.zshrc
 ## END Oh my zsh
+
+## BEGIN git
+git config --global core.excludesfile `realpath my_confs/gitignore`
+## END git

@@ -1,0 +1,7 @@
+# *.[oa]
+# *~
+*.pyc
+*.xml
+*.swp
+.cache/
+__pycache__/

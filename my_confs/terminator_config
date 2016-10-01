@@ -1,22 +1,22 @@
 [global_config]
   enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
-  window_state = maximise
   focus = system
+  window_state = maximise
 [keybindings]
   full_screen = <Ctrl><Shift>F11
-[profiles]
-  [[default]]
-    custom_command = 'echo \"foo#bar\"'
-    scrollback_lines = 20000
-    font = Fixed 10
-    background_image = None
-    foreground_color = "#ffffff"
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+[profiles]
+  [[default]]
+    background_image = None
+    custom_command = 'echo \"foo#bar\"'
+    font = Fixed 10
+    foreground_color = "#ffffff"
+    scrollback_lines = 20000

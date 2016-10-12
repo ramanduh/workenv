@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
+CONF_PATH="rc_files"
 
 install() {
     sudo apt-get install --yes $@
@@ -23,7 +24,7 @@ install realpath
 install vim python-flake8
 
 if [ -f $HOME/.vimrc ]; then backup_conf $HOME/.vimrc; fi
-link `realpath my_confs/vimrc` $HOME/.vimrc
+link `realpath ${CONF_PATH}/vimrc` $HOME/.vimrc
 
 if [ ! -d $HOME/.vim/bundle ]
 then
@@ -36,7 +37,7 @@ vim +PluginInstall +qall
 install terminator
 mkdir -p $HOME/.config/terminator/
 if [ -f $HOME/.config/terminator/config ]; then backup_conf $HOME/.config/terminator/config; fi
-link `realpath my_confs/terminator_config` $HOME/.config/terminator/config
+link `realpath ${CONF_PATH}/terminator_config` $HOME/.config/terminator/config
 ## END Termintor
 
 ## BEGIN Oh my zsh
@@ -44,9 +45,9 @@ install zsh curl xclip
 if [ -f $HOME/.zshrc ]; then backup_conf $HOME/.zshrc; fi
 # Do not call env zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | fgrep -v 'env zsh')"
-link `realpath my_confs/zshrc` $HOME/.zshrc
+link `realpath ${CONF_PATH}/zshrc` $HOME/.zshrc
 ## END Oh my zsh
 
 ## BEGIN git
-git config --global core.excludesfile `realpath my_confs/gitignore`
+git config --global core.excludesfile `realpath ${CONF_PATH}/gitignore`
 ## END git

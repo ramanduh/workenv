@@ -85,3 +85,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias fgrep="fgrep --color"
 alias vim="vim -O"
+
+export PATH="$PATH:/home/duhamel/Repos/scal_files/bin"

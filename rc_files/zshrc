@@ -86,4 +86,11 @@ source $ZSH/oh-my-zsh.sh
 alias fgrep="fgrep --color"
 alias vim="vim -O"
 
+# ifconfig wrapper to include public IP
+# nslookup -type=txt o-o.myaddr.l.google.com ns1.google.com
+ifconfig() {
+	dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | tr -d '"' | sed "s/\(.*\)/\npublic addr\t\1\n/g"
+	/sbin/ifconfig
+}
+
 export PATH="$PATH:/home/duhamel/Repos/scal_files/bin"

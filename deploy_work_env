@@ -21,7 +21,7 @@ install realpath
 ## END Realpath
 
 ## BEGIN  Vim 
-install vim python-flake8
+install vim python-flake8 ctags
 
 if [ -f $HOME/.vimrc ]; then backup_conf $HOME/.vimrc; fi
 link `realpath ${CONF_PATH}/vimrc` $HOME/.vimrc

@@ -1,4 +1,4 @@
-" Vundle setup
+" Vundle setup {{{
 set nocompatible
 filetype off
 
@@ -16,16 +16,16 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
+filetype plugin indent on " }}}
 
+" Folding config {{{
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-
 " Enable folding with the spacebar
 nnoremap <space> za
+" }}}
 
 au BufNewFile,BufRead *.py
 			\set tabstop=4
@@ -41,9 +41,6 @@ au BufNewFile,BufRead *.js,*.html,*.css set expandtab
 " utf8 support
 set encoding=utf8
 
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 " General vim config 
 let python_highlight_all=1
 syntax on
@@ -58,9 +55,10 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 " Run Flake8 on writting a Python FIle
 au BufWritePost *.py call Flake8()
 
-" NERDTree Config
+" NERDTree Config {{{
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+" }}}
 
 " Tab characteres 4-spaces-wide
 set tabstop=4
@@ -72,9 +70,10 @@ au BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl># -*- coding: utf-8 -*-\<nl
 au BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\<nl>\"|$
 augroup END
 
-" TagList config
+" TagList config {{{
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Close_On_Select = 1
 let Tlist_Use_Right_Window = 1
 let Tlist_File_Fold_Auto_Close = 1
 map <C-t> :TlistToggle<CR>
+" }}}

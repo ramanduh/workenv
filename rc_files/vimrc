@@ -15,6 +15,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'jlanzarotta/bufexplorer'
 
 call vundle#end()
 filetype plugin indent on " }}}
@@ -36,7 +37,7 @@ au BufNewFile,BufRead *.py
 			\set autoindent
 			\set fileformat=unix
 
-au BufNewFile,BufRead *.js,*.html,*.css set expandtab
+au BufNewFile,BufRead *.js,*.html,*.css,*.sh set expandtab
 
 " utf8 support
 set encoding=utf8
@@ -51,6 +52,8 @@ set incsearch
 " Remove hilight on C-l
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
+" Buffer explorer
+map <C-b> :BufExplorer<CR>
 
 " Run Flake8 on writting a Python FIle
 au BufWritePost *.py call Flake8()

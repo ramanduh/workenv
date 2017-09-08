@@ -1,8 +1,7 @@
-# *.[oa]
 # *~
 *.pyc
 *.xml
-*.swp
-*.swo
+# vim swap files
+*.sw[pomn]
 .cache/
 __pycache__/

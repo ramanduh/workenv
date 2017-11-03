@@ -51,7 +51,7 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages autojump copydir copyfile)
+plugins=(git colored-man-pages autojump copydir copyfile compleat jira)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias fgrep="fgrep --color"
 alias vim="vim -O"
+alias jira-issue="jira $(git rev-parse --abbrev-ref HEAD | sed 's/.*RING-\([0-9]*\)-.*/\1/g')"
 
 # ifconfig wrapper to include public IP
 # nslookup -type=txt o-o.myaddr.l.google.com ns1.google.com
@@ -94,3 +95,6 @@ ifconfig() {
 }
 
 export PATH="$PATH:/home/duhamel/Repos/scal_files/bin"
+
+autoload bashcompinit
+bashcompinit

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e 
+set -e
 
 PROGNAME=`basename $0`
 usage() {
@@ -28,7 +28,7 @@ while : ; do
 	case "$1" in
 		-h|--help) usage;;
 		-r) MAXDEPTH=""; shift;;
-		-f) FORCE=1; shift;; 
+		-f) FORCE=1; shift;;
 		--) shift ; break;;
 	esac
 done
@@ -46,7 +46,7 @@ protect() {
 		printf "\n"
 		[ "X$pass" != "X" ] && [ "$pass" = "$pass_check" ] && \
 			pass_initialised=1
-	done	
+	done
 
 	output="`dirname $1`/`basename $1 .pdf`${suffix}.pdf"
 	pdftk $1 output ${output} user_pw $pass && \

@@ -37,6 +37,12 @@ au BufNewFile,BufRead *.py
 
 au BufNewFile,BufRead *.js,*.html,*.css,*.sh set expandtab
 
+au BufNewFile,BufRead *.yaml,*yml set
+			\ tabstop=2
+			\ softtabstop=2
+			\ shiftwidth=2
+			\ expandtab
+
 " utf8 support
 set encoding=utf8
 
@@ -80,4 +86,11 @@ map <C-t> :TlistToggle<CR>
 " Highlight and match extra whites space {{{
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
+" }}}
+
+" Syntastic: disable on python file: let vim-flake8 do the job {{{
+" let g:syntastic_disabled_filetypes=['py']
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["py", "python"] }
 " }}}

@@ -94,6 +94,14 @@ ifconfig() {
 	/sbin/ifconfig
 }
 
+# copy path of a given file to the system or X Windows clipboard
+#
+# copypath <file>
+copypath() {
+	emulate -L zsh
+	realpath $1 | clipcopy
+}
+
 export PATH="$PATH:/home/duhamel/Repos/scal_files/bin"
 
 autoload bashcompinit

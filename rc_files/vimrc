@@ -35,13 +35,13 @@ au BufNewFile,BufRead *.py
 			\set autoindent
 			\set fileformat=unix
 
-au BufNewFile,BufRead *.js,*.html,*.css,*.sh set expandtab
-
 au BufNewFile,BufRead *.yaml,*yml set
 			\ tabstop=2
 			\ softtabstop=2
 			\ shiftwidth=2
 			\ expandtab
+
+au BufNewFile,BufRead *.js,*.html,*.css,*.twig,*.php set expandtab
 
 " utf8 support
 set encoding=utf8

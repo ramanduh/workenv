@@ -99,7 +99,7 @@ ifconfig() {
 # copypath <file>
 copypath() {
 	emulate -L zsh
-	realpath $1 | clipcopy
+	realpath -z $1 | clipcopy
 }
 
 # SCALITY: open jira issue belonging to the current branch

@@ -85,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias fgrep="fgrep --color"
 alias vim="vim -O"
-alias jira-issue="jira $(git rev-parse --abbrev-ref HEAD | sed 's/.*RING-\([0-9]*\)-.*/\1/g')"
+alias hp-scan="hp-scan -spdf -mcolor"
 
 # ifconfig wrapper to include public IP
 # nslookup -type=txt o-o.myaddr.l.google.com ns1.google.com
@@ -100,6 +100,11 @@ ifconfig() {
 copypath() {
 	emulate -L zsh
 	realpath $1 | clipcopy
+}
+
+# SCALITY: open jira issue belonging to the current branch
+scal-jira() {
+    jira $(git rev-parse --abbrev-ref HEAD | sed 's/.*RING-\([0-9]*\)-.*/\1/g')
 }
 
 export PATH="$PATH:/home/duhamel/Repos/scal_files/bin"

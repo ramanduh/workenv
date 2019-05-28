@@ -26,22 +26,26 @@ set foldlevel=99
 nnoremap <space> za
 " }}}
 
+" Expandtab everywhere
+let _curfile = expand("%:t")
+if _curfile =~ "Makefile" || _curfile =~ "makefile" || _curfile =~ ".*\.mk"
+set noexpandtab
+else
+set expandtab
+set tabstop=4
+set shiftwidth=4
+endif
+
 au BufNewFile,BufRead *.py
-			\set tabstop=4
 			\set softtabstop=4
-			\set shiftwidth=4
 			\set textwidth=79
-			\set expandtab
 			\set autoindent
 			\set fileformat=unix
 
-au BufNewFile,BufRead *.yaml,*yml set
+au BufNewFile,BufRead *.yaml,*yml,*.sls set
 			\ tabstop=2
 			\ softtabstop=2
 			\ shiftwidth=2
-			\ expandtab
-
-au BufNewFile,BufRead *.js,*.html,*.css,*.twig,*.php set expandtab
 
 " utf8 support
 set encoding=utf8

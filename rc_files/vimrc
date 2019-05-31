@@ -10,6 +10,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'lepture/vim-jinja'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}

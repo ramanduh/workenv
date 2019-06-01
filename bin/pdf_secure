@@ -2,7 +2,7 @@
 
 set -e
 
-PROGNAME=`basename $0`
+PROGNAME=$(basename "$0")
 usage() {
 	echo "Usage: ${PROGNAME} [-f] [-r] [<DIR-NAME>]"
 	cat << EOF
@@ -20,7 +20,7 @@ EOF
 #           -s suffix
 #           -c clean unprotected
 
-OPTS=`getopt -o rfh -l help -n "${PROGNAME}" -- "$@"`
+OPTS=$(getopt -o rfh -l help -n "${PROGNAME}" -- "$@")
 
 eval set -- "$OPTS"
 
@@ -38,29 +38,29 @@ DIR=$1
 [ "X$DIR" = "X" ] && DIR="."
 
 protect() {
-	while [ $pass_initialised -eq 0 ]
+	while [ "$pass_initialised" -eq 0 ]
 	do
-		read -s -p "Pass: " pass </dev/tty
+		read -r -s -p "Pass: " pass </dev/tty
 		printf "\n"
-		read -s -p "Confirm Pass: " pass_check </dev/tty
+		read -r -s -p "Confirm Pass: " pass_check </dev/tty
 		printf "\n"
 		[ "X$pass" != "X" ] && [ "$pass" = "$pass_check" ] && \
 			pass_initialised=1
 	done
 
-	output="`dirname $1`/`basename $1 .pdf`${suffix}.pdf"
-	pdftk $1 output ${output} user_pw $pass && \
-		printf "File ${output} created\n"
+	output="$(dirname "$1")/$(basename "$1" .pdf)${suffix}.pdf"
+	pdftk "$1" output "${output}" user_pw "$pass" && \
+		printf "File %s created\n" "$output"
 }
 
 pass_initialised=0
 
-find $DIR ${MAXDEPTH="-maxdepth 1"} -iname "*.pdf"  ! -iname "*${suffix}.pdf" | while read pdf_file ;\
+find $DIR ${MAXDEPTH="-maxdepth 1"} -iname "*.pdf"  ! -iname "*${suffix}.pdf" | while read -r pdf_file ;\
 do
 	if [ -f "${pdf_file%.pdf}${suffix}.pdf" ]
 	then
-		[ ${FORCE=0} -eq 1 ] && protect $pdf_file && pass_initialised=1
+		[ ${FORCE=0} -eq 1 ] && protect "$pdf_file" && pass_initialised=1
 	else
-		protect $pdf_file && pass_initialised=1
+		protect "$pdf_file" && pass_initialised=1
 	fi
 done

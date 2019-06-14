@@ -28,5 +28,5 @@ link() {
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	install coreutils
 else
-	install realpath
+	install manpages-pl manpages-fr-extra
 fi

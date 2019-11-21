@@ -58,6 +58,7 @@ set wildmenu
 " General vim config
 let python_highlight_all=1
 syntax on
+colorscheme ron
 set ignorecase
 set nu
 set hlsearch

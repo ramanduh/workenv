@@ -109,5 +109,8 @@ scal-jira() {
 
 export PATH="$PATH:/home/duhamel/Repos/scal_files/bin"
 
+# Set and editor for arc
+export EDITOR=vim
+
 autoload bashcompinit
 bashcompinit

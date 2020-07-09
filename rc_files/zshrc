@@ -108,9 +108,13 @@ scal-jira() {
 }
 
 export PATH="$PATH:/home/duhamel/Repos/scal_files/bin"
+export GOPATH="$GOPATH:$HOME/go:$HOME/core3/plz-out/gen/third_party/go:$HOME/core3/plz-out/go"
 
 # Set and editor for arc
 export EDITOR=vim
 
 autoload bashcompinit
 bashcompinit
+
+# plz autocomplete
+source <(plz --completion_script)

@@ -17,7 +17,8 @@ Plugin 'nvie/vim-flake8'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'lepture/vim-jinja'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'vim-scripts/taglist.vim'
+"Plugin 'vim-scripts/taglist.vim'
+Plugin 'yegappan/taglist'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'Rykka/riv.vim'  " RST

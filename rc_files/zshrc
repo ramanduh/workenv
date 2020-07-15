@@ -118,3 +118,6 @@ bashcompinit
 
 # plz autocomplete
 source <(plz --completion_script)
+
+# kubectl autocomplete
+source <(kubectl completion zsh)

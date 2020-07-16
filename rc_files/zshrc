@@ -87,6 +87,9 @@ alias fgrep="fgrep --color"
 alias vim="vim -O"
 alias hp-scan="hp-scan -spdf -mcolor"
 
+# Backward kill line on ctrl^u
+bindkey \^U backward-kill-line
+
 # ifconfig wrapper to include public IP
 # nslookup -type=txt o-o.myaddr.l.google.com ns1.google.com
 ifconfig() {

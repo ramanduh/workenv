@@ -23,6 +23,7 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'Rykka/riv.vim'  " RST
 Plugin 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }   " Vim-go
+Plugin 'psf/black'
 
 call vundle#end()
 filetype plugin indent on " }}}
@@ -50,6 +51,9 @@ au BufNewFile,BufRead *.py
 			\set textwidth=79
 			\set autoindent
 			\set fileformat=unix
+
+" Run black when saving
+autocmd BufWritePre *.py execute ':Black'
 
 au BufNewFile,BufRead *.yaml,*yml,*.sls set
 			\ tabstop=2
